@@ -1,4 +1,11 @@
-192.168.0.31
-192.168.0.38
-192.168.0.39
-192.168.0.43
+[media]
+plex
+
+[security]
+adguard
+vaultwarden
+
+[webapps]
+freshrss
+bookstack
+plex
