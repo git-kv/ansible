@@ -1,16 +1,17 @@
 [media]
-plex
+plex ansible_host=192.168.0.31
 
 [security]
-adguard
-vaultwarden
+adguard ansible_host=192.168.0.21
+vaultwarden ansible_host=192.168.0.43
 
 [webapps]
-freshrss
-bookstack
-plex
+freshrss ansible_host=192.168.0.39
+bookstack ansible_host=192.168.0.38
+plex ansible_host=192.168.0.31
 
 [websites]
 
 [workstations]
-mgmt
+mgmt ansible_host=192.168.0.37
+bazzy ansible_host=192.168.0.46
