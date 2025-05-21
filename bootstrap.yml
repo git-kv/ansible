@@ -5,6 +5,14 @@
   remote_user: keith
   pre_tasks:
 
+  - name: remove cdrom from sources (Debian & Ubuntu)
+    tags: always
+    replace:
+      dest: /etc/apt/sources.list
+      regexp: '^deb cdrom'
+      replace: '#deb cdrom'
+    when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
   - name: install updates (CentOS)
     tags: always
     dnf:
@@ -12,12 +20,12 @@
       update_cache: yes
     when: ansible_distribution == "CentOS"
 
-  - name: install updates (Ubuntu)
+  - name: install updates (Debian & Ubuntu)
     tags: always
     apt:
       upgrade: dist
       update_cache: yes
-    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+    when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
 
 - hosts: all
