@@ -2,6 +2,7 @@
 
 - hosts: all
   become: true
+  remote_user: keith
   pre_tasks:
 
   - name: install updates (CentOS)
@@ -16,11 +17,12 @@
     apt:
       upgrade: dist
       update_cache: yes
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
 
 - hosts: all
   become: true
+  remote_user: keith
   tasks:
 
   - name: create ansible user
