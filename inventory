@@ -9,6 +9,7 @@ vaultwarden ansible_host=192.168.0.43
 freshrss ansible_host=192.168.0.39
 bookstack ansible_host=192.168.0.38
 plex ansible_host=192.168.0.31
+nextcloud ansible_host=192.168.0.34
 
 [websites]
 
