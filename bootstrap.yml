@@ -2,7 +2,9 @@
 
 - hosts: all
   become: true
-  remote_user: keith
+  remote_user: keith 
+  vars:
+    ansible_private_key_file: "~/.ssh/id_ed25519"
   pre_tasks:
 
   - name: remove cdrom from sources (Debian & Ubuntu)
@@ -31,6 +33,8 @@
 - hosts: all
   become: true
   remote_user: keith
+  vars:
+    ansible_private_key_file: "~/.ssh/id_ed25519"
   tasks:
 
   - name: create ansible user
