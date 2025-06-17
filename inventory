@@ -18,3 +18,7 @@ mgmt ansible_host=192.168.0.37
 bazzy ansible_host=192.168.0.46
 
 [misc]
+
+[management]
+mgmt ansible_host=192.168.0.37
+portainer ansible_host=192.168.0.55
