@@ -38,6 +38,15 @@
       update_cache: yes
     when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
+  - name: install admin tools (AlmaLinux)
+    dnf:
+      name:
+        - vim
+        - tmux
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "AlmaLinux"
+
 
 - hosts: all
   become: true
