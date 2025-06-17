@@ -18,5 +18,4 @@ mgmt ansible_host=192.168.0.37
 bazzy ansible_host=192.168.0.46
 
 [misc]
-centstream ansible_host=192.168.0.53
 alma-01 ansible_host=192.168.0.54
