@@ -3,11 +3,11 @@
 - hosts: all
   become: true
   pre_tasks:
-  - name: update cache (CentOS)
+  - name: update cache (AlmaLinux & CentOS)
     tags: always
     dnf:
       update_cache: yes
-    when: ansible_distribution == "CentOS"
+    when: ansible_distribution == "CentOS" or ansible_distribution == "AlmaLinux"
     changed_when: false
 
   - name: update cache (Debian & Ubuntu)
@@ -17,11 +17,11 @@
     when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     changed_when: false
 
-  - name: install updates (CentOS)
+  - name: install updates (AlmaLinux & CentOS)
     tags: always
     dnf:
       update_only: yes
-    when: ansible_distribution == "CentOS"
+    when: ansible_distribution == "CentOS" or ansible_distribution == "AlmaLinux"
 
   - name: install updates (Debian & Ubuntu)
     tags: always
