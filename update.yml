@@ -42,13 +42,3 @@
       owner: keith
       group: keith
       mode: 0644
-
-  - name: add IP addresses of all hosts to all hosts
-    tags: always
-    lineinfile:
-      dest: /etc/hosts
-      regexp: '.*{{ item }}$'
-      line: "{{ hostvars[item].ansible_host }} {{item}}"
-      state: present
-    when: hostvars[item].ansible_host is defined
-    with_items: "{{ groups.all }}"
