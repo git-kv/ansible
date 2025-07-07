@@ -1,0 +1,6 @@
+- name: install tmux and vim
+  package:
+    name:
+      - "{{ tmux_package_name }}"
+      - "{{ vim_package_name }}"
+    state: latest
