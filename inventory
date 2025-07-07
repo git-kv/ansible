@@ -6,6 +6,8 @@ adguard ansible_host=192.168.0.21
 vaultwarden ansible_host=192.168.0.43
 portainer ansible_host=192.168.0.55
 
+[db_servers]
+
 [file_servers]
 plex ansible_host=192.168.0.31
 
