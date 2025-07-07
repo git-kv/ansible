@@ -1,0 +1,7 @@
+- name: install apache and php
+  package:
+    name:
+      - "{{ apache_package_name }}"
+      - "{{ php_package_name }}"
+    state: latest
+    update_cache: yes

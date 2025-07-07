@@ -1,24 +1,20 @@
-[media]
-plex ansible_host=192.168.0.31
-
-[security]
-adguard ansible_host=192.168.0.21
-vaultwarden ansible_host=192.168.0.43
-
-[webapps]
+[container_servers]
 freshrss ansible_host=192.168.0.39
 bookstack ansible_host=192.168.0.38
-plex ansible_host=192.168.0.31
 nextcloud ansible_host=192.168.0.34
+adguard ansible_host=192.168.0.21
+vaultwarden ansible_host=192.168.0.43
+portainer ansible_host=192.168.0.55
 
-[websites]
+[file_servers]
+plex ansible_host=192.168.0.31
+
+[media_servers]
+plex ansible_host=192.168.0.31
+
+[web_servers]
+tranquilweb ansible_host=192.168.0.57
 
 [workstations]
 mgmt ansible_host=192.168.0.37
 bazzy ansible_host=192.168.0.46
-
-[misc]
-
-[management]
-mgmt ansible_host=192.168.0.37
-portainer ansible_host=192.168.0.55
