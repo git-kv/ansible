@@ -15,12 +15,12 @@
       replace: '#deb cdrom'
     when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
-  - name: install updates (CentOS)
+  - name: install updates (AlmaLinux & CentOS)
     tags: always
     dnf:
       update_only: yes
       update_cache: yes
-    when: ansible_distribution == "CentOS"
+    when: ansible_distribution == "CentOS" or ansible_distribution == "AlmaLinux"
 
   - name: install updates (Debian & Ubuntu)
     tags: always
@@ -38,7 +38,7 @@
       update_cache: yes
     when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
-  - name: install admin tools (AlmaLinux)
+  - name: install admin tools (AlmaLinux & CentOS)
     dnf:
       name:
         - vim
