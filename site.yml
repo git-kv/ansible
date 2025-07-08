@@ -7,6 +7,14 @@
     ansible_private_key_file: "~/.ssh/id_ed25519"
   pre_tasks:
 
+  - name: remove cdrom from sources (Debian & Ubuntu)
+    tags: always
+    replace:
+      dest: /etc/apt/sources.list
+      regexp: '^deb cdrom'
+      replace: '#deb cdrom'
+    when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
   - name: install updates (AlmaLinux & CentOS)
     tags: always
     dnf:
@@ -48,22 +56,3 @@
       owner: root
       group: root
       mode: 0440
-
-  - name: copy tmux config
-    tags: always
-    copy:
-      src: ~/ansible/files/tmux.conf
-      dest: /home/keith/.tmux.conf
-      owner: keith
-      group: keith
-      mode: 0644
-
-  - name: add IP addresses of all hosts to all hosts
-    tags: always
-    lineinfile:
-      dest: /etc/hosts
-      regexp: '.*{{ item }}$'
-      line: "{{ hostvars[item].ansible_host }} {{item}}"
-      state: present
-    when: hostvars[item].ansible_host is defined
-    with_items: "{{ groups.all }}"
