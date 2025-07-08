@@ -1,7 +1,8 @@
 - name: install updates (AlmaLinux & CentOS)
   tags: always
   dnf:
-    update_only: yes
+    name: "*"
+    state: latest
   when: ansible_distribution == "CentOS" or ansible_distribution == "AlmaLinux"
 
 - name: install updates (Debian & Ubuntu)
