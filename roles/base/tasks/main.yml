@@ -1,4 +1,13 @@
+- name: remove cdrom from sources (Debian & Ubuntu)
+  tags: always
+  replace:
+    dest: /etc/apt/sources.list
+    regexp: '^deb cdrom'
+    replace: '#deb cdrom'
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
 - name: install tmux and vim
+  tags: always
   package:
     name:
       - "{{ tmux_package_name }}"
