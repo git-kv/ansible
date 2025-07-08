@@ -17,28 +17,7 @@
     when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     changed_when: false
 
-  - name: install updates (AlmaLinux & CentOS)
-    tags: always
-    dnf:
-      update_only: yes
-    when: ansible_distribution == "CentOS" or ansible_distribution == "AlmaLinux"
-
-  - name: install updates (Debian & Ubuntu)
-    tags: always
-    apt:
-      upgrade: dist
-    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-
-
 - hosts: all
   become: true
-  tasks:
-
-  - name: copy tmux config
-    tags: always
-    copy:
-      src: ~/ansible/files/tmux.conf
-      dest: /home/keith/.tmux.conf
-      owner: keith
-      group: keith
-      mode: 0644
+  roles:
+    - base

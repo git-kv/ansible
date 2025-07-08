@@ -1,3 +1,15 @@
+- name: install updates (AlmaLinux & CentOS)
+  tags: always
+  dnf:
+    update_only: yes
+  when: ansible_distribution == "CentOS" or ansible_distribution == "AlmaLinux"
+
+- name: install updates (Debian & Ubuntu)
+  tags: always
+  apt:
+    upgrade: dist
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
 - name: install tmux and vim
   tags: always
   package:

@@ -15,19 +15,19 @@
       replace: '#deb cdrom'
     when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
-  - name: install updates (AlmaLinux & CentOS)
+  - name: update cache (AlmaLinux & CentOS)
     tags: always
     dnf:
-      update_only: yes
       update_cache: yes
     when: ansible_distribution == "CentOS" or ansible_distribution == "AlmaLinux"
+    changed_when: false
 
-  - name: install updates (Debian & Ubuntu)
+  - name: update cache (Debian & Ubuntu)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
-    when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+    changed_when: false
 
 - hosts: all
   become: true
