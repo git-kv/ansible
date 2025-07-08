@@ -56,3 +56,38 @@
       owner: root
       group: root
       mode: 0440
+
+- hosts: all
+  become: true
+  roles:
+    - base
+
+- hosts: container_servers
+  become: true
+  roles:
+    - container_servers
+
+- hosts: db_servers
+  become: true
+  roles:
+    - db_servers
+
+- hosts: file_servers
+  become: true
+  roles:
+    - file_servers
+
+- hosts: media_servers
+  become: true
+  roles:
+    - media_servers
+
+- hosts: web_servers
+  become: true
+  roles:
+    - web_servers
+
+- hosts: workstations
+  become: true
+  roles:
+    - workstations
