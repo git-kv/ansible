@@ -38,3 +38,12 @@
     state: present
   when: hostvars[item].ansible_host is defined
   with_items: "{{ groups.all }}"
+
+- name: check if reboot is required (AlmaLinux & CentOS)
+  ansible.builtin.shell:
+    cmd: "needs-restarting -r -s"
+  register: needs_restarting
+  changed_when: needs_restarting.rc == 1
+  failed_when: false
+  notify: reboot_needed
+  when: ansible_distribution == "AlmaLinux" or ansible_distribution == "CentOS"
